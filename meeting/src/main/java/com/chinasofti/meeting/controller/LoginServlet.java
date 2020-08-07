@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 		int flag=service.login(username, password);
 		
 		if(flag==1) {
-			
+			//TODO 访问登录控制
 			//登录后将员工信息保存到session中  获取session
 			HttpSession session=request.getSession();
 			
@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 				request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
 			}
 			if("2".equals(role)) {//管理员
-				//TODO LoginServlet尚未完成
+				
 				request.getRequestDispatcher("employee/employeeindex.jsp").forward(request, response);
 			}
 		}else {

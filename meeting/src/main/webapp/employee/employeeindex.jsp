@@ -6,23 +6,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'employeeindex.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    This is employeeindex.jsp. <br>
-  </body>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>会议系统</title>
+</head>
+	<frameset rows="150,*,93" cols="*" framespacing="0" frameborder="no" border="0">
+		<!-- 顶部 -->
+ 		<frame src="employee/top.jsp" name="topFrame" scrolling="No" noresize="noresize" id="topFrame"  marginwidth="0" marginheight="0"  frameborder="0" />
+	 		
+	 		<!-- 中间 -->
+	 	<frameset cols="260,*" id="frame">
+			<frame src="employee/left.jsp" name="leftFrame" noresize="noresize" marginwidth="110px" marginheight="0" frameborder="0" scrolling="auto" target="main"  />
+			<frame src="employee/01.html" name="main" marginwidth="50px" marginheight="40px" frameborder="0" scrolling="auto" target="_self"  />
+	  	</frameset>
+	  	
+	  	<!-- 底部 -->
+	 	<frame src="employee/02.html" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" marginwidth="0" marginheight="0"/>
+	</frameset><noframes></noframes>
 </html>
