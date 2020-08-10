@@ -1,6 +1,7 @@
 package com.chinasofti.meeting.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,12 +43,79 @@ public class EmployeeDao {
 		}
 		return employee;
 		
-		
 	}
+	
+	public Employee selectByUserName(String username) {
+		conn=ConnectionFactory.getConnection();
+		Employee employee=null;
+		String sql="select * from employee where username=?";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				employee=new Employee();
+				employee.setEmployeeid(rs.getInt("employeeid"));
+				employee.setEmployeename(rs.getString("employeename"));
+				employee.setUsername(rs.getString("username"));
+				employee.setPhone(rs.getString("phone"));
+				employee.setEmail(rs.getString("email"));
+				employee.setStatus(rs.getString("status"));
+				employee.setDepartmentid(rs.getInt("departmentid"));
+				employee.setPassword(rs.getString("password"));
+				employee.setRole(rs.getString("role"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, rs);
+		}
+	   
+		return employee;
+	}
+		
+	//向表employee中添加一行记录
+	public void insert(Employee employee) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "insert into employee "
+				+"(employeename,username,phone,email,status,departmentid,password,role)"
+				+"values(?,?,?,?,?,?,?,?)";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, employee.getEmployeename());
+			pstmt.setString(2, employee.getUsername());
+			pstmt.setString(3, employee.getPhone());
+			pstmt.setString(4, employee.getEmail());
+			pstmt.setString(5, employee.getStatus());
+			pstmt.setInt(6, employee.getDepartmentid());
+			pstmt.setString(7, employee.getPassword());
+			pstmt.setString(8, employee.getRole());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt,null);
+		}
+	}
+	
 	public static void main(String[] args) {
 		EmployeeDao dao = new EmployeeDao();
-		Employee emp = dao.selectByNamePwd("lilei", "1");
-		System.out.println(emp);
+		//Employee emp = dao.selectByNamePwd("lilei", "1");
+		//Employee emp =dao.selectByUserName("123");
+		Employee emp = new Employee(null, "呼呼啦", "hhl", "123", 1, "@@@", "1232132132", "0", "2");
+		//System.out.println(emp);
+		dao.insert(emp);
 	}
+
+
+	
 
 }

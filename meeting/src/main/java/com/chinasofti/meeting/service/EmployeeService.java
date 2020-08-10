@@ -1,7 +1,9 @@
 package com.chinasofti.meeting.service;
 
 import com.chinasofti.meeting.dao.EmployeeDao;
+
 import com.chinasofti.meeting.vo.Employee;
+
 
 public class EmployeeService {
 	private EmployeeDao dao=new EmployeeDao();
@@ -35,11 +37,27 @@ public class EmployeeService {
 		return flag;
 		
 	}
+	
+	public Integer regist(Employee employee) {
+		Integer flag = 0;
+		Employee e = dao.selectByUserName(employee.getUsername());
+		//如果发现已经存在该用户名就不保存了，否则保存。
+		if(e==null) {
+			flag = 1;
+			dao.insert(employee);
+			
+		}
 		
+		return flag;
+	}
+	
 	public static void main(String[] args) {
 		EmployeeService service=new EmployeeService();
-		int flag=service.login("lilei", "1");
-		System.out.println(flag);
+		//int flag=service.login("lilei", "1");
+		Employee emp = new Employee(null, "呼呼啦", "hhl", "123", 1, "@@@", "1232132132", "0", "2");
+		
+		int i=service.regist(emp);
+		System.out.println(i);
 	}
 	
 
