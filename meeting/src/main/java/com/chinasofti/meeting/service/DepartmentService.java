@@ -14,4 +14,19 @@ public class DepartmentService {
 		return dao.selectAll();
 	}
 
+	public void addDepartment(String departmentname) {
+		dao.insert(departmentname);
+		
+	}
+
+	public void deleteDepartment(int i) {
+		dao.delete(i);
+		
+	}
+
+	public void updateNameById(int departmentid, String departmentname) {
+		dao.updateNameById(departmentid,departmentname);
+		
+	}
+
 }

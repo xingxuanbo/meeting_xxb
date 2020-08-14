@@ -31,6 +31,10 @@ public class ViewAllDepartmentServlet extends HttpServlet {
 		if(code!=null && "regist".equals(code)) {
 			request.getRequestDispatcher("regist.jsp").forward(request, response);
 		}
+		
+		if("viewalldepartments".equals(code)) {
+			request.getRequestDispatcher("departments.jsp").forward(request, response);
+		}
 	}
 
 }

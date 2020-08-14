@@ -39,6 +39,15 @@
     <servlet-name>ApproveServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.ApproveServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AddDeleteDepartmentServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.AddDeleteDepartmentServlet</servlet-class>
+  </servlet>
+
+  
+  
+
+
 
 
 
@@ -64,7 +73,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ViewAllDepartmentServlet</servlet-name>
-    <url-pattern>/viewAllDepartmentServlet</url-pattern>
+    <url-pattern>/admin/viewAllDepartmentServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ValidateUsernameServlet</servlet-name>
@@ -86,6 +95,12 @@
     <servlet-name>ApproveServlet</servlet-name>
     <url-pattern>/admin/approveServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddDeleteDepartmentServlet</servlet-name>
+    <url-pattern>/admin/addDeleteDepartmentServlet</url-pattern>
+  </servlet-mapping>
+  
+  
   
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

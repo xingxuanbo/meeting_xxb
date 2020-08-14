@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.chinasofti.meeting.util.ConnectionFactory;
+import com.chinasofti.meeting.vo.Department;
 import com.chinasofti.meeting.vo.Employee;
 
 public class EmployeeDao {
@@ -143,7 +144,7 @@ public class EmployeeDao {
 		return employeeList;
 	}
 	
-	
+
 	public static void main(String[] args) {
 		EmployeeDao dao = new EmployeeDao();
 		//Employee emp = dao.selectByNamePwd("lilei", "1");
