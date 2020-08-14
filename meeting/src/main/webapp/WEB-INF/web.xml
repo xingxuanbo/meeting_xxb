@@ -43,6 +43,11 @@
     <servlet-name>AddDeleteDepartmentServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.AddDeleteDepartmentServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>MybookingsServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.MybookingsServlet</servlet-class>
+  </servlet>
+
 
   
   
@@ -98,6 +103,10 @@
   <servlet-mapping>
     <servlet-name>AddDeleteDepartmentServlet</servlet-name>
     <url-pattern>/admin/addDeleteDepartmentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MybookingsServlet</servlet-name>
+    <url-pattern>/admin/mybookingsServlet</url-pattern>
   </servlet-mapping>
   
   

@@ -57,7 +57,8 @@ public class LoginServlet extends HttpServlet {
 			String role=loginedEmployee.getRole();//获取登录员工角色
 			//将个人信息放到session
 			session.setAttribute("employeename", loginedEmployee.getEmployeename());
-			
+			//会议预定
+			session.setAttribute("employeeid", loginedEmployee.getEmployeeid());
 			
 			if("1".equals(role)) {//管理员
 				request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
