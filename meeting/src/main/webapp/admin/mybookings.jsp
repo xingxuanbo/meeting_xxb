@@ -39,9 +39,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                        <td>${item.key.starttime }</td>
 	                        <td>${item.key.endtime }</td>
 	                        <td>${item.key.reservationtime }</td>
-	                        <td>
-                            <a class="clickbutton" href="mymeetingdetails.html">查看/撤销</a>
-	                        </td>
+	                        <c:if test="${item.key.status.equals('0') }">
+	                        	<td>
+                            		<a class="clickbutton" href="mymeetingdetailsServlet?meetingid=${item.key.meetingid}">查看/撤销</a>
+	                        	</td>
+	                        </c:if>
+	                        
+	                        <c:if test="${item.key.status.equals('1') }">
+	                        	<td>
+                            		<a class="clickbutton" href="mymeetingdetailsServlet?meetingid=${item.key.meetingid}">查看/已撤销</a>
+	                        	</td>
+	                        </c:if>
+	                        
 	                    </tr>	
                     </c:forEach>
                    

@@ -47,6 +47,26 @@
     <servlet-name>MybookingsServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.MybookingsServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>MymeetingdetailsServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.MymeetingdetailsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CancelMeetingServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.CancelMeetingServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MeetingroomsServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.MeetingroomsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RoomdetailsServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.RoomdetailsServlet</servlet-class>
+  </servlet>
+
+
+
+
 
 
   
@@ -107,6 +127,22 @@
   <servlet-mapping>
     <servlet-name>MybookingsServlet</servlet-name>
     <url-pattern>/admin/mybookingsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MymeetingdetailsServlet</servlet-name>
+    <url-pattern>/admin/mymeetingdetailsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CancelMeetingServlet</servlet-name>
+    <url-pattern>/admin/cancelMeetingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetingroomsServlet</servlet-name>
+    <url-pattern>/admin/meetingroomsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RoomdetailsServlet</servlet-name>
+    <url-pattern>/admin/roomdetailsServlet</url-pattern>
   </servlet-mapping>
   
   
