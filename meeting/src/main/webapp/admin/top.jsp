@@ -20,9 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="header-quicklink">
                 欢迎您，<strong>${sessionScope.employeename }</strong>
-                <a href="changepassword.html">[修改密码]</a>
+                
+                <!-- <a href="changepassword.html">[修改密码]</a> -->
                 <a href="logout" target="_parent">[退出]</a>
             </div>
+            <div class="header-quicklink">您是第[<font>${applicationScope.count}</font>]访问者</div>
             
         </div>
         

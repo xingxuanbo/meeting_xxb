@@ -3,6 +3,7 @@ package com.chinasofti.meeting.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +24,12 @@ public class LoginServlet extends HttpServlet {
 
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
 		//获取用户名密码
 		String username=request.getParameter("username");
 		String password=request.getParameter("pwd");
 		
+
 		//获取免密登录天数
 		String timelength=request.getParameter("timelength");
 		int days=0;
@@ -47,7 +50,26 @@ public class LoginServlet extends HttpServlet {
 		int flag=service.login(username, password);
 		
 		if(flag==1) {
-			//TODO 访问登录控制
+			//获取上下文对象
+			ServletContext ctxt=this.getServletContext();
+			//添加获取上下文初始化参数的方法实例，与业务无关，请忽略
+			
+			String level = ctxt.getInitParameter("level");
+			//System.out.println("level="+level);
+
+			int count=0;
+			Object countstr=ctxt.getAttribute("count");
+			if(countstr==null) {//如果第一次访问，countstr为空
+				count=1;
+			}else {
+				count=Integer.parseInt(countstr.toString());
+				count++;
+			}
+			
+			ctxt.setAttribute("count", count);
+			
+			
+			
 			//登录后将员工信息保存到session中  获取session
 			HttpSession session=request.getSession();
 			
