@@ -23,7 +23,7 @@ public class RoomdetailsServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Integer roomid = Integer.parseInt(request.getParameter("roomid"));
 		
-		System.out.println(roomid);
+		//System.out.println(roomid);
 		MeetingRoomService service  = new MeetingRoomService();
 		//根据roomid查询到相关的会议室
 		Meetingroom room = service.viewOnMeetingRoom(roomid);

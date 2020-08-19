@@ -15,5 +15,15 @@ public class MeetingRoomService {
 		
 		return meetingroomdao.selectallmeetingrooms();
 	}
+	public void updateMeetingroom(Meetingroom room) {
+		meetingroomdao.updateMeetingroom(room);
+		
+	}
+	
+	
+	public void addmeetingroom(Meetingroom room) {
+		meetingroomdao.addmeetingroom(room);
+		
+	}
 
 }

@@ -45,11 +45,7 @@ public class MeetingRoomDao {
 		
 		return meetingRoom;
 	}
-	public static void main(String[] args) {
-		MeetingRoomDao dao = new MeetingRoomDao();
-		Meetingroom m = dao.selectByRoomId(8);
-		System.out.println(m);
-	}
+	
 	public List<Meetingroom> selectallmeetingrooms() {
 		conn = ConnectionFactory.getConnection();
 		List<Meetingroom> list = new ArrayList<Meetingroom>();
@@ -80,6 +76,62 @@ public class MeetingRoomDao {
 		
 		return list;
 	}
+	public void updateMeetingroom(Meetingroom room) {
+		conn = ConnectionFactory.getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "update meetingroom set roomnum=?,roomname=?"
+				+ ",capacity=?,status=?,description=? where roomid="+room.getRoomid();
+
+		System.out.println("dao"+room);
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, room.getRoomnum());
+			pstmt.setString(2, room.getRoomname());
+			pstmt.setInt(3, room.getCapacity());
+			pstmt.setString(4, room.getStatus());
+			pstmt.setString(5, room.getDescription());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+		
+	}
+	
+	public void addmeetingroom(Meetingroom room) {
+		conn = ConnectionFactory.getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO meetingroom"
+				+"(roomnum,roomname,capacity,status,description)"
+				+"VALUES (?,?,?,?,?)";
+
+		//System.out.println("dao"+room);
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, room.getRoomnum());
+			pstmt.setString(2, room.getRoomname());
+			pstmt.setInt(3, room.getCapacity());
+			pstmt.setString(4, room.getStatus());
+			pstmt.setString(5, room.getDescription());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, null);
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		MeetingRoomDao dao = new MeetingRoomDao();
+		Meetingroom m = dao.selectByRoomId(8);
+		
+		System.out.println(m);
+	}
+
 	
 
 }

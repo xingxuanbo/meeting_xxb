@@ -63,6 +63,21 @@
     <servlet-name>RoomdetailsServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.RoomdetailsServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UpdateMeetingroomServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.UpdateMeetingroomServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddmeetingroomServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.AddmeetingroomServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.LogoutServlet</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -143,6 +158,18 @@
   <servlet-mapping>
     <servlet-name>RoomdetailsServlet</servlet-name>
     <url-pattern>/admin/roomdetailsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateMeetingroomServlet</servlet-name>
+    <url-pattern>/admin/updateMeetingroomServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddmeetingroomServlet</servlet-name>
+    <url-pattern>/admin/addmeetingroomServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/admin/logout</url-pattern>
   </servlet-mapping>
   
   
