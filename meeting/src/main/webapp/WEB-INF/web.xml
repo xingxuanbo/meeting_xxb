@@ -110,6 +110,11 @@
     <servlet-name>MymeetingsServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.MymeetingsServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>MeetingdetailsServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.MeetingdetailsServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -188,6 +193,10 @@
   <servlet-mapping>
     <servlet-name>MymeetingsServlet</servlet-name>
     <url-pattern>/admin/mymeetingsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetingdetailsServlet</servlet-name>
+    <url-pattern>/admin/meetingdetailsServlet</url-pattern>
   </servlet-mapping>
   
   
