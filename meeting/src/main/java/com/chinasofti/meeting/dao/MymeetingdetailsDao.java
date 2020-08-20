@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.chinasofti.meeting.util.ConnectionFactory;
 import com.chinasofti.meeting.vo.Employee;
+import com.chinasofti.meeting.vo.Meeting;
 
 public class MymeetingdetailsDao {
 	private Connection conn;
@@ -16,13 +17,7 @@ public class MymeetingdetailsDao {
 	ResultSet rs=null;
 
 	
-	public static void main(String[] args) {
-		MymeetingdetailsDao dao = new MymeetingdetailsDao();
-		List<Employee> list = dao.selectAllEmployeesByMeetingid(28);
-		for(Employee e:list){
-			System.out.println(e);
-		}
-	}
+	
 
 	public List<Employee> selectAllEmployeesByMeetingid(Integer meetingid) {
 		conn=ConnectionFactory.getConnection();
@@ -57,4 +52,48 @@ public class MymeetingdetailsDao {
 		return employeelist;
 	}
 
+	public List<Meeting> selectAllMeetingByPartId(Integer employeeid) {
+		conn = ConnectionFactory.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Meeting meeting = null;
+		List<Meeting> meetingList = new ArrayList<Meeting>();
+		String sql = "select * from meeting,meetingparticipants "
+				+ " where meeting.meetingid=meetingparticipants.meetingid "
+				+ " and meetingparticipants.employeeid ="+employeeid;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				meeting = new Meeting();
+				meeting.setMeetingid(rs.getInt("meetingid"));
+				meeting.setMeetingname(rs.getString("meetingname"));
+				meeting.setRoomid(rs.getInt("roomid"));
+				meeting.setReservationistid(rs.getInt("reservationistid"));
+				meeting.setNumberofparticipants(rs.getInt("numberofparticipants"));
+				meeting.setStarttime(rs.getTimestamp("starttime"));
+				meeting.setEndtime(rs.getTimestamp("endtime"));
+				meeting.setReservationtime(rs.getTimestamp("reservationtime"));
+				meeting.setCanceledtime(rs.getTimestamp("canceledtime"));
+				meeting.setDescription(rs.getString("description"));
+				meeting.setStatus(rs.getString("status"));
+				meetingList.add(meeting);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, rs);
+		}
+
+		return meetingList;
+	}
+	public static void main(String[] args) {
+		MymeetingdetailsDao dao = new MymeetingdetailsDao();
+		List<Employee> list = dao.selectAllEmployeesByMeetingid(28);
+		for(Employee e:list){
+			System.out.println(e);
+		}
+	}
 }

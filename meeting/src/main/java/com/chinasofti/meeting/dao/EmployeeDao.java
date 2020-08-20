@@ -154,6 +154,40 @@ public class EmployeeDao {
 		dao.insert(emp);
 	}
 
+	public Employee selectById(Integer reservationistid) {
+		conn = ConnectionFactory.getConnection();
+		Employee employee = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from employee where employeeid="+reservationistid;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				employee = new Employee();
+				employee.setEmployeeid(rs.getInt("employeeid"));
+				employee.setEmployeename(rs.getString("employeename"));
+				employee.setUsername(rs.getString("username"));
+				employee.setPhone(rs.getString("phone"));
+				employee.setEmail(rs.getString("email"));
+				employee.setStatus(rs.getString("status"));
+				employee.setDepartmentid(rs.getInt("departmentid"));
+				employee.setPassword(rs.getString("password"));
+				employee.setRole(rs.getString("role"));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(conn, pstmt, rs);
+		}
+
+
+		return employee;
+	}
+
 	
 
 

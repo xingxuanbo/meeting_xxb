@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="notifications.html">最新通知</a></li>
                         <li class="sidebar-menuitem active"><a href="mybookingsServlet" target="main">我的预定</a></li>
-                        <li class="sidebar-menuitem"><a href="mymeetings.html">我的会议</a></li>
+                        <li class="sidebar-menuitem"><a href="mymeetingsServlet" target="main">我的会议</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">

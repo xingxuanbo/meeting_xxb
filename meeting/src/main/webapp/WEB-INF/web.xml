@@ -3,6 +3,37 @@
     xmlns="http://java.sun.com/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <listener>
+	 	<listener-class> com.chinasofti.meeting.listener.CounterListener</listener-class>
+  </listener>
+  
+  <filter>
+	 	<filter-name>logineFilter</filter-name>
+	 	<filter-class>com.chinasofti.meeting.filter.LogineFilter</filter-class>
+	 </filter>
+	 <filter-mapping>
+	 	<filter-name>logineFilter</filter-name>
+	 	<url-pattern>/admin/*</url-pattern>
+	  	<dispatcher>REQUEST</dispatcher>
+	  	<dispatcher>FORWARD</dispatcher>
+	  	<dispatcher>INCLUDE</dispatcher>
+	  	<dispatcher>ERROR</dispatcher>
+	 </filter-mapping>
+
+	 <filter>
+	 	<filter-name>characterEncodingFilter</filter-name>
+	 	<filter-class>com.chinasofti.meeting.filter.CharacterEncodingFilter</filter-class>
+	 </filter>
+
+     <filter-mapping>
+	 	<filter-name>characterEncodingFilter</filter-name>
+	 	<url-pattern>*</url-pattern>
+	  	<dispatcher>REQUEST</dispatcher>
+	  	<dispatcher>FORWARD</dispatcher>
+	  	<dispatcher>INCLUDE</dispatcher>
+	  	<dispatcher>ERROR</dispatcher>
+	  </filter-mapping>
+  
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.LoginServlet</servlet-class>
@@ -75,27 +106,10 @@
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.chinasofti.meeting.controller.LogoutServlet</servlet-class>
   </servlet>
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-  
-
-
-
-
+  <servlet>
+    <servlet-name>MymeetingsServlet</servlet-name>
+    <servlet-class>com.chinasofti.meeting.controller.MymeetingsServlet</servlet-class>
+  </servlet>
 
 
 
@@ -170,6 +184,10 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/admin/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MymeetingsServlet</servlet-name>
+    <url-pattern>/admin/mymeetingsServlet</url-pattern>
   </servlet-mapping>
   
   

@@ -43,7 +43,12 @@ public class MybookingsServlet extends HttpServlet {
 		List<String> rommsNameList = new ArrayList<String>();
 				
 		for(Meeting m:meetingsList) {
-			rommsNameList.add(((Meetingroom) roomService.viewOnMeetingRoom(m.getRoomid())).getRoomname());
+			//rommsNameList.add(((Meetingroom) roomService.viewOnMeetingRoom(m.getRoomid())).getRoomname());
+		
+			
+			//System.out.println("ViewMyBookingServlet...获取会议室..."+roomService.viewOnMeetingRoom(m.getRoomid()).getRoomname());
+			Meetingroom room = roomService.viewOnMeetingRoom(m.getRoomid());
+			rommsNameList.add(room.getRoomname());
 		}
 				
 		Map<Meeting,String> map = new HashMap<Meeting,String>();

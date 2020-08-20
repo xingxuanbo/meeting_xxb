@@ -50,23 +50,19 @@ public class LoginServlet extends HttpServlet {
 		int flag=service.login(username, password);
 		
 		if(flag==1) {
-			//获取上下文对象
-			ServletContext ctxt=this.getServletContext();
-			//添加获取上下文初始化参数的方法实例，与业务无关，请忽略
-			
-			String level = ctxt.getInitParameter("level");
-			//System.out.println("level="+level);
-
-			int count=0;
-			Object countstr=ctxt.getAttribute("count");
-			if(countstr==null) {//如果第一次访问，countstr为空
-				count=1;
+			//获取上下文
+			ServletContext ctxt = this.getServletContext();
+			//判断上下文中是否有访问次数的数据  没有则初始为0
+			int visitcount;
+			if(ctxt.getAttribute("visitcount") == null) {
+				visitcount = 0;
 			}else {
-				count=Integer.parseInt(countstr.toString());
-				count++;
+				visitcount = Integer.parseInt(ctxt.getAttribute("visitcount").toString());
 			}
-			
-			ctxt.setAttribute("count", count);
+			//成功登录后 访问数量自增一
+			visitcount++;
+			//保存到上下文中去
+			ctxt.setAttribute("visitcount", visitcount);
 			
 			
 			
@@ -85,7 +81,7 @@ public class LoginServlet extends HttpServlet {
 			if("1".equals(role)) {//管理员
 				request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
 			}
-			if("2".equals(role)) {//管理员
+			if("2".equals(role)) {//员工页面
 				
 				request.getRequestDispatcher("employee/employeeindex.jsp").forward(request, response);
 			}
