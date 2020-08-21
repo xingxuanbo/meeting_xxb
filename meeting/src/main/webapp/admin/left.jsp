@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="addmeetingroom.jsp" target="main">添加会议室</a></li>
                         <li class="sidebar-menuitem"><a href="meetingroomsServlet?code=meetingrooms" target="main">查看会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="bookmeeting.html">预定会议</a></li>
+                        <li class="sidebar-menuitem"><a href="bookmeetingServlet?code=prepare" target="main">预定会议</a></li>
                         <li class="sidebar-menuitem"><a href="searchmeetings.html">搜索会议</a></li>
                     </ul>
                 </div>

@@ -22,5 +22,15 @@ public class MeetingService {
 		
 		return parDao.selectAllMeetingByPartId(employeeid);
 	}
-
+	public void bookMeeting(Meeting meeting, List<Integer> employeeidList) {
+		//保存会议
+		Integer meetingid = meetingDao.insert(meeting);
+		//System.out.println();
+		//保存该会议相关人员  meetingid--employeeid
+		for(Integer employeeid :employeeidList) {
+		System.out.println(employeeid+","+meetingid);
+		parDao.insert(meetingid,employeeid);
+		
+		}
+	}
 }
